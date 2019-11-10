@@ -16,7 +16,7 @@ const mapParsedFile = (map, parsedFile, fileNumber) => {
       const newValue = has(_map, key)
         ? { ..._map[key], [position]: value }
         : { [position]: value };
-      return { ..._map, [key]: newValue};
+      return { ..._map, [key]: newValue };
     },
     map);
   return newMap;
@@ -31,7 +31,7 @@ const mapToString = (differences) => {
       return `- ${key}: ${value.before}\n\t+ ${key}: ${value.after}`;
     });
   return `{\n\t${result.join('\n\t')}\n}`;
-}
+};
 
 export default (...pathToFile) => {
   const resultMap = pathToFile
