@@ -9,7 +9,7 @@ const readAndParseFile = (pathToFile) => {
   return JSON.parse(fileContent);
 };
 
-const mapParsedFile = (map, parsedFile, fileNumber) => {
+const mapParsedFile = (mapToBeginWith, parsedFile, fileNumber) => {
   const newMap = Object.entries(parsedFile)
     .reduce((_map, [key, value]) => {
       const position = tags[fileNumber];
@@ -18,18 +18,27 @@ const mapParsedFile = (map, parsedFile, fileNumber) => {
         : { [position]: value };
       return { ..._map, [key]: newValue };
     },
-    map);
+    mapToBeginWith);
   return newMap;
 };
 
-const mapToString = (differences) => {
-  const result = Object.entries(differences)
-    .map(([key, value]) => {
-      if (value.after === undefined) return `- ${key}: ${value.before}`;
-      if (value.before === undefined) return `+ ${key}: ${value.after}`;
-      if (value.before === value.after) return `  ${key}: ${value.before}`;
-      return `- ${key}: ${value.before}\n\t+ ${key}: ${value.after}`;
-    });
+const tagMap = (differences) => Object.entries(differences)
+  .map(([key, value]) => {
+    if (value.after === undefined) return { key, value, tag: 'deleted' };
+    if (value.before === undefined) return { key, value, tag: 'added' };
+    if (value.before === value.after) return { key, value, tag: 'same' };
+    return { key, value, tag: 'changed' };
+  });
+
+const render = {
+  changed: (key, value) => `- ${key}: ${value.before}\n\t+ ${key}: ${value.after}`,
+  deleted: (key, value) => `- ${key}: ${value.before}`,
+  added: (key, value) => `+ ${key}: ${value.after}`,
+  same: (key, value) => `  ${key}: ${value.before}`,
+};
+
+const toString = (taggedMap) => {
+  const result = taggedMap.map(({ key, value, tag }) => render[tag](key, value));
   return `{\n\t${result.join('\n\t')}\n}`;
 };
 
@@ -37,5 +46,5 @@ export default (...pathToFile) => {
   const resultMap = pathToFile
     .map(readAndParseFile)
     .reduce(mapParsedFile, {});
-  return mapToString(resultMap);
+  return toString(tagMap(resultMap));
 };

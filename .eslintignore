@@ -1,2 +1,4 @@
 dist
 data
+__fixtures__
+__test__

@@ -9,3 +9,7 @@ publish:
 	npm publish
 lint:
 	npx eslint .
+test:
+	npx jest
+watch:
+	npm run test -- --watch
