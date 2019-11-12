@@ -11,10 +11,9 @@ const tagData = (differences) => Object.entries(differences)
     if (value.before === undefined) return { key, value, tag: 'added' };
     if (value.before === value.after) return { key, value, tag: 'same' };
     return { key, value, tag: 'changed' };
-	});
+  });
 
-	export default (data) => {
-		const result = tagData(data).map(({ key, value, tag }) => render[tag](key, value));
-		return `{\n\t${result.join('\n\t')}\n}`;
-	};
-	
+export default (data) => {
+  const result = tagData(data).map(({ key, value, tag }) => render[tag](key, value));
+  return `{\n\t${result.join('\n\t')}\n}`;
+};
