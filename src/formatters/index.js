@@ -1,9 +1,11 @@
-import treeRender from './renderJson';
+import treeRender from './renderTree';
 import plainRender from './renderPlain';
+import jsonRender from './renderJson';
 
 const renderFor = {
   plain: plainRender,
-  json: treeRender,
+  tree: treeRender,
+  json: jsonRender,
 };
 
 export default (format) => {
