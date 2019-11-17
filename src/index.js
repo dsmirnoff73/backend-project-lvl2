@@ -1,9 +1,9 @@
-import buildDataFromFile from './factory';
-import buildMap from './mapping';
-import toString from './render';
+import parseFiles from './parser';
+import buildAST from './mapping';
+import render from './formatters';
 
-export default (...pathToFile) => {
-  const data = pathToFile.map(buildDataFromFile);
-  const differenceMap = data.reduce(buildMap, {});
-  return toString(differenceMap);
+export default (fileBefore, fileAfter, format) => {
+  const data = parseFiles([fileBefore, fileAfter]);
+  const differenceMap = buildAST(data);
+  return render(format)(differenceMap);
 };
