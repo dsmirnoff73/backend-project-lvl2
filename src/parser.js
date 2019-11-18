@@ -6,6 +6,7 @@ import { parse } from 'ini';
 const parserFor = {
   json: JSON.parse,
   yml: safeLoad,
+  yaml: safeLoad,
   ini: parse,
 };
 
