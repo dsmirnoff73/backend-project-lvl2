@@ -1,11 +1,8 @@
 # HAXLET 
-## Backend JavaScript(Node.js) Developer: 2nd project
+# Backend JavaScript(Node.js) Developer: 2nd project
 
 [![Build Status](https://travis-ci.org/dsmirnoff73/backend-project-lvl2.svg?branch=master)](https://travis-ci.org/dsmirnoff73/backend-project-lvl2)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4a9da8b303a9cd2c348e/maintainability)](https://codeclimate.com/github/dsmirnoff73/backend-project-lvl2/maintainability)
-[![asciicast](https://asciinema.org/a/VqKOyc9SysfeboKBnqWp20XxE.svg)](https://asciinema.org/a/VqKOyc9SysfeboKBnqWp20XxE)
-[![asciicast](https://asciinema.org/a/BQrLxtkkz3KahbHzlJt4Qr68Y.svg)](https://asciinema.org/a/BQrLxtkkz3KahbHzlJt4Qr68Y)
-
 ***
 The task is to develop `сli` app that evaluates two configuration files and build a diffrence report.
 
@@ -16,12 +13,12 @@ Supported config files' formats:
 
 Supported output formats:
 * **Pretty**:  tree-like easy-to-read structure
-* **Plain** :  plain text difference log
-* **Json**  :  stingified json object
+* **Plain** :  plain-text difference log
+* **Json**  :  stringified json object
 
 ***
 
-Help:
+###Help:
 ```sh
 Usage: gendiff [options] <firstConfig> <secondConfig>
 
@@ -33,7 +30,8 @@ Options:
   -h, --help           output usage information
 ```
 
-Example:
+
+###Examples:
 
 *file1:*
 ```js
@@ -89,7 +87,7 @@ Example:
   }
 }
 ```
-result for:
+Result for *-f pretty*:
 ```sh
 $  gendiff -f pretty file1 file2
 ```
@@ -130,7 +128,7 @@ $  gendiff -f pretty file1 file2
 }
 ```
 
-result for:
+Result for *-f plain*:
 ```sh
 $  gendiff -f plain file1 file2
 ```
@@ -147,5 +145,6 @@ Property 'group2' was removed
 Property 'group3' was added with value: [complex value]
 ```
 ***
+
 [![asciicast](https://asciinema.org/a/VqKOyc9SysfeboKBnqWp20XxE.svg)](https://asciinema.org/a/VqKOyc9SysfeboKBnqWp20XxE)
 [![asciicast](https://asciinema.org/a/BQrLxtkkz3KahbHzlJt4Qr68Y.svg)](https://asciinema.org/a/BQrLxtkkz3KahbHzlJt4Qr68Y)
