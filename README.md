@@ -1,4 +1,5 @@
-# HAXLET Backend JavaScript(Node.js) Developer: 2nd project
+# HAXLET 
+## Backend JavaScript(Node.js) Developer: 2nd project
 
 [![Build Status](https://travis-ci.org/dsmirnoff73/backend-project-lvl2.svg?branch=master)](https://travis-ci.org/dsmirnoff73/backend-project-lvl2)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4a9da8b303a9cd2c348e/maintainability)](https://codeclimate.com/github/dsmirnoff73/backend-project-lvl2/maintainability)
@@ -8,21 +9,19 @@
 ***
 The task is to develop `сli` app that evaluates two configuration files and build a diffrence report.
 
-*Supported config files' formats:*
+Supported config files' formats:
+* [**JSON**](https://en.wikipedia.org/wiki/JSON)
+* [**YAML**](https://en.wikipedia.org/wiki/YAML)
+* [**INI**](https://en.wikipedia.org/wiki/INI_file)
 
-* [**JSON**][https://en.wikipedia.org/wiki/JSON]
-* [**YAML**][https://en.wikipedia.org/wiki/YAML]
-* [**INI**][https://en.wikipedia.org/wiki/INI_file]
+Supported output formats:
+* **Pretty**:  tree-like easy-to-read structure
+* **Plain** :  plain text difference log
+* **Json**  :  stingified json object
 
-*Supported output formats:*
+***
 
-* **Pretty**: tree-like easy-to-read structure
-* **Plain**: plain text difference log
-* **Json**: stingified json object
-
-**
-
-*Help:*
+Help:
 ```sh
 Usage: gendiff [options] <firstConfig> <secondConfig>
 
@@ -34,9 +33,9 @@ Options:
   -h, --help           output usage information
 ```
 
-*Example:*
+Example:
 
-file1:
+*file1:*
 ```js
 {
   "common": {
@@ -60,7 +59,7 @@ file1:
 }
 ```
 
-file2:
+*file2:*
 ```js
 {
   "common": {
@@ -94,7 +93,6 @@ result for:
 ```sh
 $  gendiff -f pretty file1 file2
 ```
-
 ```sh
 {
     common: {
@@ -136,7 +134,6 @@ result for:
 ```sh
 $  gendiff -f plain file1 file2
 ```
-
 ```sh
 Property 'common.setting2' was removed
 Property 'common.setting3' was updated. From true to [complex value]
@@ -149,4 +146,6 @@ Property 'group1.nest' was updated. From [complex value] to 'str'
 Property 'group2' was removed
 Property 'group3' was added with value: [complex value]
 ```
-
+***
+[![asciicast](https://asciinema.org/a/VqKOyc9SysfeboKBnqWp20XxE.svg)](https://asciinema.org/a/VqKOyc9SysfeboKBnqWp20XxE)
+[![asciicast](https://asciinema.org/a/BQrLxtkkz3KahbHzlJt4Qr68Y.svg)](https://asciinema.org/a/BQrLxtkkz3KahbHzlJt4Qr68Y)
