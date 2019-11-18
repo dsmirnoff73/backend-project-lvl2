@@ -6,7 +6,7 @@
 ***
 The task is to develop `сli` app that evaluates two configuration files and build a diffrence report.
 
-Supported config files' formats:
+Supported config's formats:
 * [**JSON**](https://en.wikipedia.org/wiki/JSON)
 * [**YAML**](https://en.wikipedia.org/wiki/YAML)
 * [**INI**](https://en.wikipedia.org/wiki/INI_file)
@@ -18,7 +18,7 @@ Supported output formats:
 
 ***
 
-###Help:
+### Help:
 ```sh
 Usage: gendiff [options] <firstConfig> <secondConfig>
 
@@ -31,7 +31,7 @@ Options:
 ```
 
 
-###Examples:
+### Examples:
 
 *file1:*
 ```js
@@ -87,7 +87,7 @@ Options:
   }
 }
 ```
-Result for *-f pretty*:
+Result for *--format=pretty*:
 ```sh
 $  gendiff -f pretty file1 file2
 ```
@@ -128,7 +128,7 @@ $  gendiff -f pretty file1 file2
 }
 ```
 
-Result for *-f plain*:
+Result for *--format=plain*:
 ```sh
 $  gendiff -f plain file1 file2
 ```
