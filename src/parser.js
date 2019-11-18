@@ -9,11 +9,11 @@ const parserFor = {
   ini: parse,
 };
 
-export default (files) => files
-  .map((file) => {
-    const extension = extname(file).slice(1);
+export default (...filepathes) => filepathes
+  .map((filepath) => {
+    const extension = extname(filepath).slice(1);
     const parser = parserFor[extension];
-    if (!parser) throw new Error(`Can not find parser for ${file}. Check file extension.`);
-    const fileContent = fs.readFileSync(resolve(file), 'utf-8');
+    if (!parser) throw new Error(`Can not find parser for ${filepath}. Check file extension.`);
+    const fileContent = fs.readFileSync(resolve(filepath), 'utf-8');
     return parser(fileContent);
   });

@@ -1,9 +1,9 @@
-const tab = (level) => ' '.repeat(level * 4);
+const tab = (num) => ' '.repeat(num * 4);
 
-const stringify = (element, level) => ((typeof element !== 'object')
-  ? `${element}`
-  : `{\n${Object.entries(element).map(
-    ([key, value]) => `${tab(level + 2)}${key}: ${stringify(value, level + 1)}`,
+const stringify = (value, level) => ((typeof value !== 'object')
+  ? `${value}`
+  : `{\n${Object.entries(value).map(
+    ([_key, _value]) => `${tab(level + 2)}${_key}: ${stringify(_value, level + 1)}`,
   ).join('\n')}\n${tab(level + 1)}}`
 );
 
@@ -24,7 +24,7 @@ const toString = (data, level = 0) => `{\n${data.map(
     type,
     children,
     ...values
-  }) => ((type !== 'haveChildren')
+  }) => ((type !== 'hasChildren')
     ? renderFor[type](key, values, level)
     : `${tab(level + 1)}${key}: ${toString(children, level + 1)}`
   ),

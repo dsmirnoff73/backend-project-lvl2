@@ -15,15 +15,15 @@ const renderFor = {
   changed: (name, { valueBefore, valueAfter }) => `Property '${name}' was updated. From ${stringify(valueBefore)} to ${stringify(valueAfter)}`,
 };
 
-const toString = (data, prefix) => `${data.map(
+const toString = (data, oldPrefix) => `${data.map(
   ({
     key,
     type,
     children,
     ...values
   }) => {
-    const newPrefix = prefix ? `${prefix}.${key}` : key;
-    return (type !== 'haveChildren')
+    const newPrefix = oldPrefix ? `${oldPrefix}.${key}` : key;
+    return (type !== 'hasChildren')
       ? renderFor[type](newPrefix, values)
       : toString(children, newPrefix);
   },

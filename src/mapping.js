@@ -1,40 +1,40 @@
 import { has, union } from 'lodash';
 
-const keyRuleBook = [
+const ruleBookForKyes = [
   {
-    rule: (key, before, after) => has(before, key) && has(after, key)
-      && (typeof before[key] === 'object') && (typeof after[key] === 'object'),
-    type: 'haveChildren',
+    rule: (key, dataBefore, dataAfter) => has(dataBefore, key) && has(dataAfter, key)
+      && (typeof dataBefore[key] === 'object') && (typeof dataAfter[key] === 'object'),
+    type: 'hasChildren',
     process: () => {},
   },
   {
-    rule: (key, before, after) => has(before, key) && has(after, key)
-      && (before[key] === after[key]),
+    rule: (key, dataBefore, dataAfter) => has(dataBefore, key) && has(dataAfter, key)
+      && (dataBefore[key] === dataAfter[key]),
     type: 'same',
-    process: (key, before) => ({
-      value: before[key],
+    process: (key, dataBefore) => ({
+      value: dataBefore[key],
     }),
   },
   {
-    rule: (key, before, after) => has(before, key) && has(after, key),
+    rule: (key, dataBefore, dataAfter) => has(dataBefore, key) && has(dataAfter, key),
     type: 'changed',
-    process: (key, before, after) => ({
-      valueBefore: before[key],
-      valueAfter: after[key],
+    process: (key, dataBefore, dataAfter) => ({
+      valueBefore: dataBefore[key],
+      valueAfter: dataAfter[key],
     }),
   },
   {
-    rule: (key, before) => has(before, key),
+    rule: (key, dataBefore) => has(dataBefore, key),
     type: 'deleted',
-    process: (key, before) => ({
-      value: before[key],
+    process: (key, dataBefore) => ({
+      value: dataBefore[key],
     }),
   },
   {
     rule: () => true,
     type: 'added',
-    process: (key, before, after) => ({
-      value: after[key],
+    process: (key, dataBefore, dataAfter) => ({
+      value: dataAfter[key],
     }),
   },
 ];
@@ -45,12 +45,14 @@ const buildAST = ([dataBefore, dataAfter]) => {
   const keys = union(keysBefore, keysAfter);
   const resultAST = keys.map(
     (key) => {
-      const { type, process } = keyRuleBook.find(({ rule }) => rule(key, dataBefore, dataAfter));
+      const { type, process } = ruleBookForKyes
+        .find(({ rule }) => rule(key, dataBefore, dataAfter));
       const prefix = { key, type };
-      const suffix = (type === 'haveChildren')
+      const suffix = (type === 'hasChildren')
         ? { children: buildAST([dataBefore[key], dataAfter[key]]) }
         : process(key, dataBefore, dataAfter);
-      return { ...prefix, ...suffix };
+      const resultNoda = { ...prefix, ...suffix };
+      return resultNoda;
     },
   );
   return resultAST;

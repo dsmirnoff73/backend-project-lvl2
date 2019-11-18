@@ -2,8 +2,8 @@ import parseFiles from './parser';
 import buildAST from './mapping';
 import render from './formatters';
 
-export default (fileBefore, fileAfter, format) => {
-  const data = parseFiles([fileBefore, fileAfter]);
-  const differenceMap = buildAST(data);
-  return render(format)(differenceMap);
+export default (pathToFileBefore, pathToFileAfter, outputFormat) => {
+  const parsedContent = parseFiles(pathToFileBefore, pathToFileAfter);
+  const differenceMap = buildAST(parsedContent);
+  return render(outputFormat)(differenceMap);
 };

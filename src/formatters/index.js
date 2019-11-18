@@ -1,10 +1,10 @@
-import treeRender from './renderTree';
+import prettyRender from './renderPretty';
 import plainRender from './renderPlain';
 import jsonRender from './renderJson';
 
 const renderFor = {
   plain: plainRender,
-  tree: treeRender,
+  pretty: prettyRender,
   json: jsonRender,
 };
 
