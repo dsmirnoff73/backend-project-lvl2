@@ -145,7 +145,7 @@ Property 'group2' was removed
 Property 'group3' was added with value: [complex value]
 ```
 ***
-## ASCIINEMA
+## ASCIINEMA SECTION
 steps 1 & 2:
 [![asciicast](https://asciinema.org/a/ICIy2BdqH8LYH35VpfVaNpthE.svg)](https://asciinema.org/a/ICIy2BdqH8LYH35VpfVaNpthE)
 

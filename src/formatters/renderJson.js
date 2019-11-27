@@ -5,5 +5,6 @@ export default (data) => {
       : { ...acc, [key]: { ...rest, children: iter(children) } }),
     {},
   );
-  return JSON.stringify(iter(data));
+  const jsonBuildFromData = iter(data);
+  return JSON.stringify(jsonBuildFromData);
 };

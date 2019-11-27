@@ -10,6 +10,6 @@ const renderFor = {
 
 export default (format) => {
   const render = renderFor[format];
-  if (!render) throw new Error('Unknown output format option. Use -h for help.');
+  if (!render) throw new Error(`Unknown output format option ${format}. Use -h for help.`);
   return render;
 };
