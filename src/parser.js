@@ -10,6 +10,6 @@ const parserFor = {
 
 export default (format) => {
   const parser = parserFor[format];
-  if (!parser) throw new Error(`Can not find parser for ${format || 'file without extension'}. Check file extension.`);
+  if (!parser) throw new Error(`Can not find parser for ${format || 'this'} format.`);
   return parser;
 };

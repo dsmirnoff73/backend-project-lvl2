@@ -2,17 +2,17 @@ import fs from 'fs';
 import { resolve } from 'path';
 import genDiff from '../src';
 
-const dummyFile = '../__fixtures__/dummy.file';
-const fileWithNoExtension = '../__fixtures__/dummyWithNoExtension';
+const pathToDummyFile = '../__fixtures__/dummy.file';
+const pathToFileWithNoExtension = '../__fixtures__/dummyWithNoExtension';
 
 test('unsuppoted filetype', () => {
-  const diff = () => genDiff(dummyFile, fileWithNoExtension);
-  expect(diff).toThrowError('Can not find parser for file. Check file extension');
+  const diff = () => genDiff(pathToDummyFile, pathToFileWithNoExtension);
+  expect(diff).toThrowError('Can not find parser for file format.');
 });
 
 test('no extension', () => {
-  const diff = () => genDiff(fileWithNoExtension, dummyFile);
-  expect(diff).toThrowError('Can not find parser for file without extension. Check file extension');
+  const diff = () => genDiff(pathToFileWithNoExtension, pathToDummyFile);
+  expect(diff).toThrowError('Can not find parser for this format.');
 });
 
 test.each([

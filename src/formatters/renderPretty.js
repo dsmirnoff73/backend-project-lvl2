@@ -1,4 +1,4 @@
-const identity = (x) => x;
+import { identity } from 'lodash';
 
 const tab = (num) => ' '.repeat(num * 4);
 
@@ -23,6 +23,6 @@ const renderFor = {
 };
 
 const toString = (data, renderLevel = 0) => renderBlock(data
-  .map(({ type, ...noda }) => renderFor[type](noda, renderLevel, toString)), renderLevel);
+  .map(({ type, ...node }) => renderFor[type](node, renderLevel, toString)), renderLevel);
 
 export default toString;

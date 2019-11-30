@@ -43,8 +43,8 @@ const buildAST = (dataBefore, dataAfter) => {
         .find(({ rule }) => rule(key, dataBefore, dataAfter));
       const prefix = { key, type };
       const suffix = process(key, dataBefore, dataAfter, buildAST);
-      const resultNoda = { ...prefix, ...suffix };
-      return resultNoda;
+      const resultNode = { ...prefix, ...suffix };
+      return resultNode;
     },
   );
   return resultAST;

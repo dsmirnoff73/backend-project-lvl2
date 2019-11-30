@@ -1,4 +1,5 @@
-const identity = (x) => x;
+import { identity } from 'lodash';
+
 
 const formatFor = {
   object: () => '[complex value]',
@@ -13,7 +14,7 @@ const stringify = (value) => {
 const renderFor = {
   added: (name, { value }) => `Property '${name}' was added with value: ${stringify(value)}`,
   deleted: (name) => `Property '${name}' was removed`,
-  same: () => 'line to be filtered off',
+  same: () => null,
   changed: (name, { valueBefore, valueAfter }) => `Property '${name}' was updated. From ${stringify(valueBefore)} to ${stringify(valueAfter)}`,
   hasChildren: (prefix, { children }, f) => f(children, prefix),
 };
@@ -24,7 +25,7 @@ const toString = (data, oldPrefix) => `${data.map(
     const renderedLine = renderFor[type](newPrefix, values, toString);
     return renderedLine;
   },
-).filter((s) => s !== 'line to be filtered off')
+).filter((s) => s !== null)
   .join('\n')}`;
 
 export default toString;
