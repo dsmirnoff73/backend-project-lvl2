@@ -7,12 +7,12 @@ const pathToFileWithNoExtension = './__fixtures__/dummyWithNoExtension';
 
 test('unsuppoted filetype', () => {
   const diff = () => genDiff(pathToDummyFile, pathToFileWithNoExtension);
-  expect(diff).toThrowError('Can not find parser for file format.');
+  expect(diff).toThrowError();
 });
 
 test('no extension', () => {
   const diff = () => genDiff(pathToFileWithNoExtension, pathToDummyFile);
-  expect(diff).toThrowError('Can not find parser for this format.');
+  expect(diff).toThrowError();
 });
 
 test.each([
